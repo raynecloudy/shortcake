@@ -1,5 +1,5 @@
-pub fn get_file_desc(entry: Option<&str>) -> String {
-	return String::from(match entry {
+pub fn get_file_desc(name: String) -> String {
+	return String::from(match name.to_lowercase().split(".").last() {
 		Some("7z")			=> "ARCHIVE",
 		Some("aac")			=> "AUDIO",
 		Some("abg")			=> "IMAGE",

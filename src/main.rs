@@ -545,7 +545,7 @@ fn writecurrentdir() {
 								if filetype.is_dir() {
 									println!("{}", (format!("{}{}", hidden, i) + "\x1b[1G\x1b[6C\x1b[1m\x1b[36mDIR\x1b[1G\x1b[17C\x1b[0m|  " + hidden + "\x1b[36m" + entry.path().to_str().unwrap().replace((getdir()+"/").as_str(), "").replace(" ", "\x1b[2m•\x1b[0m\x1b[36m").as_str() + "/\x1b[0m").as_str());
 								} else {
-									let typename = file_desc::get_file_desc(entry.path().to_str().unwrap().replace((getdir()+"/").as_str(), "").to_lowercase().split(".").last());
+									let typename = file_desc::get_file_desc(entry.path().to_str().unwrap().replace((getdir()+"/").as_str(), ""));
 									println!("{}", (format!("{}{}", hidden, i) + "\x1b[1G\x1b[6C\x1b[1m\x1b[34m" + &typename + "\x1b[1G\x1b[17C\x1b[0m|  " + hidden + entry.path().to_str().unwrap().replace((getdir()+"/").as_str(), "").replace(" ", &space).as_str() + "\x1b[0m").as_str())
 								}
 							},
