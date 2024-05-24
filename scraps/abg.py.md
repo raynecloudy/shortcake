@@ -1,3 +1,5 @@
+**this is a markdown file to avoid github including it in the language counter**
+```py
 file = open(input("open a file..."), "r").read()
 
 class abg:
@@ -34,3 +36,4 @@ class abg:
 		return file.splitlines()[0]
 
 print(abg.interpret(file))
+```
