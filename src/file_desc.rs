@@ -76,7 +76,7 @@ pub fn get_file_desc(name: String) -> String {
 				Some("gdoc")		=> "DOC",
 				Some("gif")			=> "IMAGE",
 				Some("go")			=> "PROGRAM",
-				Some("gitignore")	=> "GITIGNORE",
+				Some("gitignore")	=> "CONFIG",
 				Some("gleam")		=> "PROGRAM",
 				Some("groovy")		=> "PROGRAM",
 				Some("gsheet")		=> "SPRDSHEET",
