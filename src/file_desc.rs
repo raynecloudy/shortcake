@@ -1,4 +1,7 @@
 pub fn get_file_desc(name: String) -> String {
+	if !name.contains(".") {
+		return String::from("FILE");
+	}
 	return String::from(match name.to_lowercase().as_str() {
 		"readme.md" | "readme"				=> "README",
 		"license.md" | "license"			=> "LICENSE",
