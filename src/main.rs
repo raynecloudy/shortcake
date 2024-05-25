@@ -525,8 +525,8 @@ fn writecurrentdir() {
 		Ok(entries) => {
 			clear();
 			println!("\x1b[Hshowing contents of {}/ ({} item{})", getdir(), getdircontentnum(), match getdircontentnum() { 1 => "", _ => "s" });
-			println!("\x1b[1G\x1b[6C\x1b[1m\x1b[36mDIR\x1b[1G\x1b[17C\x1b[0m|  \x1b[36m.\x1b[0m");
-			println!("\x1b[1G\x1b[6C\x1b[1m\x1b[36mDIR\x1b[1G\x1b[17C\x1b[0m|  \x1b[36m..\x1b[0m");
+			println!("\x1b[1G\x1b[7C\x1b[1m\x1b[36mDIR\x1b[1G\x1b[17C\x1b[0m|  \x1b[36m.\x1b[0m");
+			println!("\x1b[1G\x1b[7C\x1b[1m\x1b[36mDIR\x1b[1G\x1b[17C\x1b[0m|  \x1b[36m..\x1b[0m");
 			let mut i = 0;
 			for entry in entries {
 				i += 1;
