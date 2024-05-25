@@ -71,6 +71,7 @@ fn dashboard() {
 	println!("\x1b[55C  \x1b[3mlogs message to console\x1b[0m");
 	println!("");
 	println!("\x1b[110C\x1b[4A\x1b[1m\x1b[35mopen\x1b[0m \x1b[2mfile\x1b[0m");
+	println!("\x1b[110C  \x1b[3malternative names: roam\x1b[0m");
 	println!("\x1b[110C  \x1b[3mopen file from current directory\x1b[0m");
 	println!("");
 	println!("");
@@ -166,7 +167,7 @@ fn cmdinput() {
 			},
 		Err(error) => writecmdoutput(("failed to open ".to_owned() + words.join(" ").as_str().trim() + ": " + &interpret_error(error.to_string())).as_str())
 		}
-	} else if command == "cd" {
+	} else if command == "cd" || command == "roam" {
 		words[0] = "";
 		let answer = cd(words.join(" ").as_str().trim());
 		writecurrentdir();
@@ -180,35 +181,10 @@ fn cmdinput() {
 		println!("");
 		println!("");
 		writecmdoutput(prettycmd().as_str());
-	} else if command == "roam" || command == "r" {
-		words[0] = "";
-		let file_result = &fs::read_to_string(words.join(" ").as_str().trim());
-		match file_result {
-			Ok(file) => {
-				clear();
-				let fileex = words[words.len()-1].split(".").last();
-				print!("{}\n\n", color_code::color(file, fileex));
-				writecmdoutput(("opened file ".to_owned() + words.join(" ").as_str().trim()).as_str());
-			},
-		Err(error) => {
-			if interpret_error(error.to_string()) == "is a directory (os error 21)" {
-				let answer = cd(words.join(" ").as_str().trim());
-				writecurrentdir();
-				println!("");
-				println!("");
-				writecmdoutput(&answer);
-			} else {
-				writecurrentdir();
-				println!("");
-				println!("");
-				writecmdoutput(&interpret_error(error.to_string()));
-			}
-		}
-		}
 	} else if command == "clear" || command == "cls" {
 		clear();
 		writecmdoutput(prettydir().as_str());
-	} else if vec!["r..", "roam..", "cd.."].contains(&input.to_lowercase().trim()) {
+	} else if vec!["roam..", "cd.."].contains(&input.to_lowercase().trim()) {
 		words[0] = "";
 		let answer = cd("..");
 		writecurrentdir();
@@ -260,14 +236,11 @@ fn cmdinput() {
 		println!("  \x1b[3mlogs message to console\x1b[0m");
 		println!("");
 		println!("\x1b[1m\x1b[35mopen\x1b[0m \x1b[2mfile\x1b[0m");
+		println!("  \x1b[3malternative names: roam\x1b[0m");
 		println!("  \x1b[3mopen file from current directory\x1b[0m");
 		println!("");
 		println!("\x1b[1m\x1b[35mread\x1b[0m \x1b[2mfile\x1b[0m");
 		println!("  \x1b[3mopen file from current directory in plain text editor\x1b[0m");
-		println!("");
-		println!("\x1b[1m\x1b[35mroam\x1b[0m \x1b[2mfile\x1b[0m");
-		println!("  \x1b[3malternative names: r\x1b[0m");
-		println!("  \x1b[3mopen file/folder from current directory\x1b[0m");
         println!("");
         println!("\x1b[1m\x1b[35mwhoami\x1b[0m");
         println!("  \x1b[3mdisplays your username and real name\x1b[0m");
