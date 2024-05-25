@@ -8,11 +8,6 @@
   - [why not just use markdown?](#why-not-just-use-markdown?)
   - [example usage](#example-usage)
 # description
-shortcake is more than just an ide. it's its own sorta operating system building off of the underlying os foundation. i designed it this way for three main reasons:
-- i can't make my own operating system *(trust me, i've tried)*
-- ease of access *(not having to install a whole new os)*
-- fluidity *(easy to switch environments)*
-
 built by hand from head to toe, **this project is my live's work thus far**, and i'm determined to make the best ide for everybody who was supported me on this crazy seven-year ride of my life. i cannot stress this enough, **thank you all. 💖**
 ## what makes it unique?
 shortcake is unique in how it works. everything is done by keyboard, no cursor necessary. this might seem like a downgrade from the fancy gui that we have today, but some fellas like me prefer a very simplistic layout. shortcake brings that to the table, with an extra layer of strawberry flavored _✨pizzazz✨_
