@@ -18,6 +18,7 @@ shortcake is unique in how it works. everything is done by keyboard, no cursor n
 - casual feel, while still getting the job done
 - you can use it for free!
 - built to be fast
+- code coloring
 ## built in rust
 shortcake is programmed in [rust](https://www.rust-lang.org/), which means you can speak directly to the metal without an underlying interpreter, thus increasing speed!
 # about markplus
