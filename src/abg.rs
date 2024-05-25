@@ -1,5 +1,5 @@
 // converted to python. i couldn't figure out how to run python in rust :(
-// original file is viewable at scraps/abg.py
+// original file is viewable at scraps/abg.py.md
 // this file caused so many errors i almost cried
 
 pub fn read(file: String) {
