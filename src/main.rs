@@ -401,8 +401,15 @@ fn cmdinput() {
 		words[0] = "";
 		let joined = words.join(" ");
 		let joined_trimmed = joined.trim();
-		let path = std::path::Path::new(&joined_trimmed);
-		match fs::remove_dir_all(path) {
+		let getdir = getdir();
+		let dir = match joined_trimmed {
+			"" | "." => getdir.as_str(),
+			&_ => joined_trimmed
+		};
+		if joined_trimmed == "" || joined_trimmed == "." {
+			cd("..");
+		};
+		match fs::remove_dir_all(dir) {
 			Ok(_) => {
 				writecurrentdir();
 				println!("");
