@@ -116,7 +116,6 @@ pub fn get_file_desc(name: String) -> String {
 				Some("log")			=> "DOC",
 				Some("lua")			=> "PROGRAM",
 				Some("m")			=> "PROGRAM",
-				Some("m+")			=> "MARKUP",
 				Some("markdown")	=> "MARKUP",
 				Some("md")			=> "MARKUP",
 				Some("minix")		=> "FILE SYS",
