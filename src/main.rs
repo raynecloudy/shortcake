@@ -144,7 +144,7 @@ fn cmdinput() {
 	} else if command == "dash" || command == "dashboard" || command == "home" {
 		dashboard();
 		writecmdoutput(prettycmd().as_str());
-	} else if command == "open" {
+	} else if command == "read" {
 		words[0] = "";
 		let file_result = &fs::read_to_string(words.join(" ").as_str().trim());
 		match file_result {
@@ -152,9 +152,9 @@ fn cmdinput() {
 				clear();
 				let fileex = words[words.len()-1].split(".").last();
 				println!("{}\n\n", color_code::color(file, fileex));
-				writecmdoutput(("opened file ".to_owned() + words.join(" ").as_str().trim()).as_str());
+				writecmdoutput(("read file ".to_owned() + words.join(" ").as_str().trim()).as_str());
 			},
-		Err(error) => writecmdoutput(("failed to open ".to_owned() + words.join(" ").as_str().trim() + ": " + &interpret_error(error.to_string())).as_str())
+		Err(error) => writecmdoutput(("failed to read ".to_owned() + words.join(" ").as_str().trim() + ": " + &interpret_error(error.to_string())).as_str())
 		}
 	} else if command == "abg" {
 		words[0] = "";
@@ -261,6 +261,9 @@ fn cmdinput() {
 		println!("");
 		println!("\x1b[1m\x1b[35mopen\x1b[0m \x1b[2mfile\x1b[0m");
 		println!("  \x1b[3mopen file from current directory\x1b[0m");
+		println!("");
+		println!("\x1b[1m\x1b[35mread\x1b[0m \x1b[2mfile\x1b[0m");
+		println!("  \x1b[3mopen file from current directory in plain text editor\x1b[0m");
 		println!("");
 		println!("\x1b[1m\x1b[35mroam\x1b[0m \x1b[2mfile\x1b[0m");
 		println!("  \x1b[3malternative names: r\x1b[0m");
