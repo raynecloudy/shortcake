@@ -8,6 +8,7 @@ use whoami::fallible;
 
 mod abg;
 mod file_desc;
+mod color_code;
 
 pub fn main() {
 	clear();
@@ -150,7 +151,7 @@ fn cmdinput() {
 			Ok(file) => {
 				clear();
 				let fileex = words[words.len()-1].split(".").last();
-				println!("{}\n\n", code_formatter(file, fileex));
+				println!("{}\n\n", color_code::color(file, fileex));
 				writecmdoutput(("opened file ".to_owned() + words.join(" ").as_str().trim()).as_str());
 			},
 		Err(error) => writecmdoutput(("failed to open ".to_owned() + words.join(" ").as_str().trim() + ": " + &interpret_error(error.to_string())).as_str())
@@ -186,7 +187,7 @@ fn cmdinput() {
 			Ok(file) => {
 				clear();
 				let fileex = words[words.len()-1].split(".").last();
-				print!("{}\n\n", code_formatter(file, fileex));
+				print!("{}\n\n", color_code::color(file, fileex));
 				writecmdoutput(("opened file ".to_owned() + words.join(" ").as_str().trim()).as_str());
 			},
 		Err(error) => {
@@ -597,19 +598,4 @@ fn interpret_error(error: String) -> String {
 
 fn prettycmd() -> String {
 	return whoami::username() + "@" + &fallible::hostname().expect("failed to get host name") + ":" + &prettydir();
-}
-
-fn code_formatter(file: &str, fileex: Option<&str>) -> String {
-	let file = file.replace("\t", "    ");
-	match fileex {
-		Some("abg") => {
-			let lines = file.split("\n").collect::<Vec<_>>();
-			let mut linesx = lines.clone();
-			linesx.remove(0);
-			linesx.remove(0);
-			let colored = format!("\x1b[33m{}\n\x1b[0m\x1b[2m\x1b[3m{}\x1b[0m\n\x1b[35m{}", lines[0], lines[1], linesx.join("\n").replace("xx", "\x1b[2mxx\x1b[0m\x1b[35m"));
-			return colored;
-		},
-		Some(&_) | None => return file
-	};
 }
